@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gothic Haven - Literatura Gótica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1>Gothic Haven</h1>
+            <button class="menu-toggle">Menu</button>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#cultura">Cultura</a></li>
+                <li><a href="#literatura">Literatura</a></li>
+                <li><a href="#inspiracoes">Inspirações</a></li>
+                <li><a href="#monumentos">Monumentos</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="fade-in">Literatura Gótica</h2>
+                <p class="fade-in">Descubra os clássicos e contemporâneos do gênero gótico</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h3 class="fade-in">Clássicos Góticos</h3>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <h4>O Castelo de Otranto</h4>
+                    <p>Horace Walpole, 1764</p>
+                    <img src="placeholder.jpg" alt="Capa de O Castelo de Otranto" class="book-cover">
+                    <button class="btn modal-trigger" data-modal="#modal-otranto">Saiba mais</button>
+                </div>
+                <div class="card fade-in">
+                    <h4>Frankenstein</h4>
+                    <p>Mary Shelley, 1818</p>
+                    <img src="placeholder.jpg" alt="Capa de Frankenstein" class="book-cover">
+                    <button class="btn modal-trigger" data-modal="#modal-frankenstein">Saiba mais</button>
+                </div>
+                <div class="card fade-in">
+                    <h4>Drácula</h4>
+                    <p>Bram Stoker, 1897</p>
+                    <img src="placeholder.jpg" alt="Capa de Drácula" class="book-cover">
+                    <button class="btn modal-trigger" data-modal="#modal-dracula">Saiba mais</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h3 class="fade-in">Autores Góticos Contemporâneos</h3>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <h4>Anne Rice</h4>
+                    <p>Conhecida por suas histórias de vampiros e bruxas, incluindo "Entrevista com o Vampiro".</p>
+                    <a href="#" class="btn">Explorar obras</a>
+                </div>
+                <div class="card fade-in">
+                    <h4>Neil Gaiman</h4>
+                    <p>Autor de "Coraline" e "Sandman", misturando elementos góticos com fantasia moderna.</p>
+                    <a href="#" class="btn">Ver livros</a>
+                </div>
+                <div class="card fade-in">
+                    <h4>Silvia Moreno-Garcia</h4>
+                    <p>Autora de "Mexican Gothic", trazendo uma nova perspectiva ao gênero gótico.</p>
+                    <a href="#" class="btn">Descobrir</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h3 class="fade-in">Clube do Livro Gótico</h3>
+            <div class="card fade-in">
+                <h4>Junte-se ao nosso Clube do Livro</h4>
+                <p>Participe de discussões mensais sobre clássicos e novos lançamentos da literatura gótica.</p>
+                <form>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <button type="submit" class="btn">Inscrever-se</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Gothic Haven. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modais -->
+    <div id="modal-otranto" class="modal">
+        <div class="modal-content">
+            <h3>O Castelo de Otranto</h3>
+            <p>Considerado o primeiro romance gótico, "O Castelo de Otranto" de Horace Walpole estabeleceu muitos dos elementos que definiram o gênero.</p>
+            <button class="btn modal-close">Fechar</button>
+        </div>
+    </div>
+
+    <div id="modal-frankenstein" class="modal">
+        <div class="modal-content">
+            <h3>Frankenstein</h3>
+            <p>"Frankenstein" de Mary Shelley é uma obra-prima do horror gótico que explora temas de ambição científica, criação e responsabilidade.</p>
+            <button class="btn modal-close">Fechar</button>
+        </div>
+    </div>
+
+    <div id="modal-dracula" class="modal">
+        <div class="modal-content">
+            <h3>Drácula</h3>
+            <p>"Drácula" de Bram Stoker redefiniu o mito do vampiro e se tornou uma das obras mais influentes da literatura gótica.</p>
+            <button class="btn modal-close">Fechar</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
