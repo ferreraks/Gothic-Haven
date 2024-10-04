@@ -27,6 +27,7 @@ body {
 }
 
 .container {
+  
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
@@ -141,7 +142,10 @@ h1, h2, h3, h4 {
   margin-bottom: 1rem;
 }
 
+
+
 .btn {
+  margin-top: 20px;
   display: inline-block;
   padding: 0.8rem 1.5rem;
   background-color: var(--color-accent);
@@ -165,16 +169,24 @@ h1, h2, h3, h4 {
 
 .form-input {
   text-align: center;
-  padding: 13px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-
+  display: flex;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
+  width: 70%;
+  max-width: 300px;
+  transition: border 0.3s ease, background 0.3s ease;
 }
 
-.form-input::placeholder {
-  color: white;
+/* Efeito ao focar no campo de e-mail */
+.form-input:focus {
+  border-color: #00c6ff; /* Cor do foco */
+  background: rgba(255, 255, 255, 0.3); /* Leve clareamento ao focar */
 }
 
 .card-grid {
