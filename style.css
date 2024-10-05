@@ -142,7 +142,9 @@ h1, h2, h3, h4 {
   margin-bottom: 1rem;
 }
 
-
+.container h3 {
+  margin-top: 20px;
+}
 
 .btn {
   margin-top: 20px;
@@ -169,7 +171,6 @@ h1, h2, h3, h4 {
 
 .form-input {
   text-align: center;
-  display: flex;
   outline: none;
   padding: 15px 20px;
   font-size: 1rem;
@@ -185,7 +186,7 @@ h1, h2, h3, h4 {
 
 /* Efeito ao focar no campo de e-mail */
 .form-input:focus {
-  border-color: #00c6ff; /* Cor do foco */
+  border-color: var(--color-accent); /* Cor do foco */
   background: rgba(255, 255, 255, 0.3); /* Leve clareamento ao focar */
 }
 
@@ -370,6 +371,7 @@ footer {
 }
 
 .book-cover {
+  margin-top: 10px;
   max-width: 200px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
