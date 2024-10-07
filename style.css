@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   
+  
 }
 
 body {
@@ -24,6 +25,19 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
+  
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .container {
@@ -52,12 +66,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 nav h1 {
   font-family: var(--font-gothic);
   font-size: 2rem;
   color: var(--color-accent);
+  
 }
 
 nav ul {
@@ -67,6 +83,7 @@ nav ul {
 }
 
 nav a {
+  
   color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -138,11 +155,12 @@ nav a:hover::after {
 }
 
 h1, h2, h3, h4 {
+  text-decoration: none;
   font-family: var(--font-gothic);
   margin-bottom: 1rem;
 }
 
-.container h3 {
+.container h2 {
   margin-top: 20px;
 }
 
@@ -164,6 +182,7 @@ h1, h2, h3, h4 {
 }
 
 .btn:hover {
+  text-decoration: none;  
   background-color: var(--color-secondary);
   transform: translateY(-3px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
@@ -394,7 +413,11 @@ footer {
     display: block;
   }
 
-  .hero h2 {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
     font-size: 2rem;
   }
 
@@ -415,6 +438,13 @@ footer {
 
   .timeline-item:nth-child(even) {
     left: 0;
+  }
+  .lazy-load {
+    transition: opacity 0.3s;
+  }
+  
+  .lazy-load:not([src]) {
+    opacity: 0;
   }
 }
 
@@ -466,6 +496,37 @@ footer {
     transform: translateY(0);
   }
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Melhorando a acessibilidade do formulário */
+.form-input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Adicionando efeito de hover nos links */
+a:hover, .btn:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* Melhorando o contraste para melhor legibilidade */
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
@@ -488,4 +549,11 @@ footer {
 
 .hover-grow:hover {
   transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0A0A0A;
+    --color-text: #F0F0F0;
+  }
 }

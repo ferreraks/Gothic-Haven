@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gothic Haven - Cultura Gótica</title>
+    <meta name="description" content="Explore a fascinante história e evolução do movimento gótico no Gothic Haven.">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous" async></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,37 +26,41 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero parallax">
             <div class="hero-content">
-                <h2 class="fade-in">Cultura Gótica</h2>
-                <p class="fade-in">Explore a fascinante história e evolução do movimento gótico</p>
+                <h1 class="fade-in typing text-shadow">Cultura Gótica</h1>
+                <p class="fade-in text-shadow">Explore a fascinante história e evolução do movimento gótico</p>
             </div>
         </section>
 
         <section class="container">
-            <h3 class="fade-in">Aspectos da Cultura Gótica</h3>
+            <h2 class="fade-in">Aspectos da Cultura Gótica</h2>
             <div class="card-grid">
-                <div class="card fade-in">
-                    <h4>Moda Gótica</h4>
+                <article class="card fade-in">
+                    <h3>Moda Gótica</h3>
                     <p>A moda gótica é caracterizada por roupas escuras, acessórios elaborados e maquiagem dramática.</p>
-                </div>
-                <div class="card fade-in">
-                    <h4>Música Gótica</h4>
+                    <a href="#moda-gotica" class="btn modal-trigger">Saiba mais</a>
+                </article>
+                <article class="card fade-in">
+                    <h3>Música Gótica</h3>
                     <p>A música gótica surgiu no final dos anos 70 e início dos 80, com bandas como Bauhaus e The Cure.</p>
-                </div>
-                <div class="card fade-in">
-                    <h4>Arte Gótica</h4>
+                    <a href="#musica-gotica" class="btn modal-trigger">Explorar</a>
+                </article>
+                <article class="card fade-in">
+                    <h3>Arte Gótica</h3>
                     <p>A arte gótica abrange desde a arquitetura medieval até expressões contemporâneas.</p>
-                </div>
-                <div class="card fade-in">
-                    <h4>Filosofia Gótica</h4>
+                    <a href="#arte-gotica" class="btn modal-trigger">Descobrir</a>
+                </article>
+                <article class="card fade-in">
+                    <h3>Filosofia Gótica</h3>
                     <p>A filosofia gótica explora temas de existencialismo, niilismo e romantismo sombrio.</p>
-                </div>
+                    <a href="#filosofia-gotica" class="btn modal-trigger">Aprofundar</a>
+                </article>
             </div>
         </section>
 
         <section class="container">
-            <h3 class="fade-in">Linha do Tempo da Cultura Gótica</h3>
+            <h2 class="fade-in">Linha do Tempo da Cultura Gótica</h2>
             <div class="timeline fade-in">
                 <div class="timeline-item">
                     <h4>1764</h4>
@@ -75,7 +82,7 @@
         </section>
 
         <section class="container">
-            <h3 class="fade-in">Eventos Góticos</h3>
+            <h2 class="fade-in">Eventos Góticos</h2>
             <div class="card-grid">
                 <div class="card fade-in">
                     <h4>Wave Gotik Treffen</h4>
@@ -107,6 +114,21 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <div id="moda-gotica" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar modal">&times;</button>
+            <h2>Moda Gótica</h2>
+            <p>A moda gótica é uma expressão visual única que combina elementos de romantismo sombrio, punk e vitoriano. Caracteriza-se por:</p>
+            <ul>
+                <li>Uso predominante de preto, com acentos em roxo, vermelho ou prata</li>
+                <li>Tecidos como renda, veludo e couro</li>
+                <li>Acessórios elaborados, incluindo joias com símbolos ocultistas</li>
+                <li>Maquiagem dramática, enfatizando palidez e olhos marcados</li>
+            </ul>
+            <p>A moda gótica evoluiu ao longo das décadas, incorporando influências de várias subculturas e períodos históricos.</p>
+        </div>
+    </div>
+
+    <script src="main.js" defer></script>
 </body>
 </html>

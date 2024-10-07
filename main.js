@@ -24,16 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
       navMenu.classList.toggle('show');
     });
   }
 
   // Fechar menu ao clicar em um link (para mobile)
-  const navLinks = document.querySelectorAll('nav ul li a');
+  const navLinks = document.querySelectorAll('nav ul li a');  // Declaração única
+
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
+        const navMenu = document.querySelector('nav ul');
+        const menuToggle = document.querySelector('.menu-toggle');
         navMenu.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
       }
     });
   });
@@ -58,8 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const modal = document.querySelector(trigger.dataset.modal);
       if (modal) {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+        openModal(modal);
       }
     });
   });
@@ -68,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     close.addEventListener('click', () => {
       const modal = close.closest('.modal');
       if (modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
+        closeModal(modal);
       }
     });
   });
@@ -78,10 +82,32 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('click', (e) => {
     modals.forEach(modal => {
       if (e.target === modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
+        closeModal(modal);
       }
     });
+  });
+
+  function openModal(modal) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Fechando modal com a tecla Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const openModal = document.querySelector('.modal.show');
+      if (openModal) {
+        closeModal(openModal);
+      }
+    }
   });
 
   // Animação de digitação para títulos
@@ -100,19 +126,31 @@ document.addEventListener('DOMContentLoaded', () => {
     typeWriter();
   });
 
+  // Efeito de parallax no hero
   window.addEventListener('scroll', function() {
     const scrollPosition = window.pageYOffset;
     const hero = document.querySelector('.hero');
-    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`; // Ajuste o valor para modificar a velocidade
+    if (hero) {
+      hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    }
   });
 
   // Smooth scroll para links internos
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        if ('scrollBehavior' in document.documentElement.style) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
     });
   });
 
@@ -124,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = entry.target;
         img.src = img.dataset.src;
         img.removeAttribute('data-src');
+        img.classList.remove('lazy-load');
         lazyLoadObserver.unobserve(img);
       }
     });
@@ -155,10 +194,132 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  countElems.forEach(elem => countObserver.observe(elem));
+  // Ajuste de altura para telas móveis
+  function setVH() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  setVH();
+  window.addEventListener('resize', setVH);
+
+  // Validação de formulários
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (form.checkValidity()) {
+        // Aqui você pode adicionar a lógica para enviar o formulário
+        console.log('Formulário válido, enviando...');
+        // Exemplo de feedback visual
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.textContent = 'Enviado!';
+        submitButton.disabled = true;
+        setTimeout(() => {
+          submitButton.textContent = 'Enviar';
+          submitButton.disabled = false;
+        }, 3000);
+      } else {
+        form.reportValidity();
+      }
+    });
+  });
+
+
+  // Implementar um simples sistema de tema claro/escuro
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isDark = document.body.classList.contains('light-theme');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      themeToggle.textContent = isDark ? '🌙' : '☀️';
+    });
+
+    // Verificar preferência salva
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.textContent = '🌙';
+    }
+  }
+
+  // Adicionar funcionalidade de busca simples
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
+      const matchingElements = Array.from(allElements).filter(el => 
+        el.textContent.toLowerCase().includes(searchTerm)
+      );
+
+      searchResults.innerHTML = '';
+      matchingElements.forEach(el => {
+        const resultItem = document.createElement('li');
+        resultItem.textContent = el.textContent.substring(0, 50) + '...';
+        searchResults.appendChild(resultItem);
+      });
+
+      searchResults.style.display = searchTerm ? 'block' : 'none';
+    });
+  }
 });
 
-window.addEventListener('resize', () => {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-})
+  // Adiciona um evento de clique para links de navegação suave
+  navLinks.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+          e.preventDefault();
+          const targetId = e.target.getAttribute('href').slice(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+  });
+
+// Função para carregar imagens de forma lazy
+function lazyLoadImages() {
+  const images = document.querySelectorAll('img[data-src]');
+  const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+  };
+
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              imageObserver.unobserve(img);
+          }
+      });
+  }, options);
+
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// Chama a função de lazy loading quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', lazyLoadImages);
+
+
+// Evitar a redeclaração de navLinks, utilizando a já declarada
+document.addEventListener('DOMContentLoaded', () => {
+  const navMenu = document.getElementById('navLinks');
+
+  if (navMenu) {
+    navMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').slice(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+});
