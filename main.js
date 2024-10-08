@@ -350,7 +350,48 @@ buttonsSaibaMais.forEach(button => {
   });
 });
 
-const monumentModal = document.querySelectorAll('modal');
-const monumentModalTriggers = document.querySelectorAll('.modal-trigger')\
+document.addEventListener('DOMContentLoaded', () => {
+  const monumentModal = document.querySelectorAll('modal');
+  const monumentModalTriggers = document.querySelectorAll('.modal-trigger')
+  
+  monumentModalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.querySelector(trigger.dataset.modal);
+      if (modal) {
+        openModal(modal);
+      }
+    });
+  });
+  
+  function openModal(modal) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal_close').focus();
+  }
 
-monumentModalTriggers
+  function closeModal(modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+    // Fechar modal ao clicar fora dele ou no botão de fechar
+    monumentModals.forEach(modal => {
+      modal.addEventListener('click', (e) => {
+          if (e.target === modal || e.target.classList.contains('modal-close')) {
+              closeModal(modal);
+          }
+      });
+  });
+
+  // Fechar modal com a tecla Esc
+  document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+          const openModal = document.querySelector('.modal.show');
+          if (openModal) {
+              closeModal(openModal);
+          }
+      }
+  });
+});
