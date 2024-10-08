@@ -41,22 +41,32 @@
                     <h3>O Castelo de Otranto</h3>
                     <p>Horace Walpole, 1764</p>
                     <img src="placeholder.jpg" data-src="./img/O Castelo de Otranto.png" alt="Capa de O Castelo de Otranto" class="book-cover lazy-load">
-                    <button class="btn modal-trigger" data-modal="#modal-otranto">Saiba mais</button>
+                    <button class="btn modal-trigger" data-modal="#modal-otranto" data-livro-id="1">Saiba mais</button>
                 </article>
                 <article class="card fade-in">
                     <h3>Frankenstein</h3>
                     <p>Mary Shelley, 1818</p>
-                    <img src=".placeholder.jpg" data-src="./img/Capa de Frankenstein.png" alt="CCapa de Frankenstein" class="book-cover lazy-load">
-                    <button class="btn modal-trigger" data-modal="#modal-otranto">Saiba mais</button>
+                    <img src=".placeholder.jpg" data-src="./img/Capa de Frankenstein.png" alt="Capa de Frankenstein" class="book-cover lazy-load">
+                    <button class="btn modal-trigger" data-modal="#modal-otranto" data-livro-id="2">Saiba mais</button>
                 </article>
                 <article class="card fade-in">
                     <h3>Drácula</h3>
                     <p>Bram Stoker, 1897</p>
                     <img src="placeholder.jpg" data-src="./img/Drácula.png" alt="Capa de Drácula" class="book-cover lazy-load">
-                    <button class="btn modal-trigger" data-modal="#modal-otranto">Saiba mais</button>
+                    <button class="btn modal-trigger" data-modal="#modal-otranto" data-livro-id="3">Saiba mais</button>
                 </article>
             </div>
         </section>
+
+        <!-- Modal para exibir informações do livro -->
+        <div class="modal" id="modal-livro" aria-hidden="true">
+            <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 id="modal-titulo">TESTE DO L</h2>
+            <p id="modal-autor">Autor do Livro</p>
+            <p id="modal-descricao">Descrição do Livro</p>
+            </div>
+        </div>
 
         <section class="container">
             <h2 class="fade-in">Autores Góticos Contemporâneos</h2>

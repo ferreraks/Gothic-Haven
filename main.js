@@ -1,6 +1,7 @@
 // main.js
 document.addEventListener('DOMContentLoaded', () => {
   // Animação de fade-in para elementos
+  
   const fadeElems = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  
   // Mudança de estilo do header ao rolar
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
@@ -279,6 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
+  
+
 // Função para carregar imagens de forma lazy
 function lazyLoadImages() {
   const images = document.querySelectorAll('img[data-src]');
@@ -323,3 +327,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+ // Adicionar funcionalidade de exibir informações do livro ao clicar em "Saiba Mais"
+
+const buttonsSaibaMais = document.querySelectorAll('.btn-saiba-mais');
+const modalLivro = document.getElementById('modal-livro');
+const modalTitulo = document.getElementById('modal-titulo');
+const modalAutor = document.getElementById('modal-autor');
+const modalDescricao = document.getElementById('modal-descricao');
+
+buttonsSaibaMais.forEach(button => {
+  button.addEventListener('click', (e) => {
+    const livroId = parseInt(button.dataset.livroId);
+    const livro = livros.find(l => l.id === livroId);
+
+    if (livro) {
+      modalTitulo.textContent = livro.titulo;
+      modalAutor.textContent = livro.autor;
+      modalDescricao.textContent = livro.descricao;
+      openModal(modalLivro);
+    }
+  });
+});
+
+const monumentModal = document.querySelectorAll('modal');
+const monumentModalTriggers = document.querySelectorAll('.modal-trigger')\
+
+monumentModalTriggers
