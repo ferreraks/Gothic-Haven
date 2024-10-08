@@ -1,6 +1,7 @@
-/* style.css */
+/* Importando fonte */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
 
+/* Definição de cores e fontes */
 :root {
   --color-background: #120E16;
   --color-text: #E0E0E0;
@@ -11,12 +12,11 @@
   --font-body: 'Poppins', sans-serif;
 }
 
+/* Reset básico */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
-  
 }
 
 body {
@@ -25,9 +25,9 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
-  
 }
 
+/* Utilitário para acessibilidade */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -40,14 +40,15 @@ body {
   border-width: 0;
 }
 
+/* Layout geral */
 .container {
-  
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* Estilo do header com trasição */
 header {
   background-color: rgba(18, 14, 22, 0.9);
   padding: 1rem 0;
@@ -62,18 +63,17 @@ header.scrolled {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilo de navegação */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 nav h1 {
   font-family: var(--font-gothic);
   font-size: 2rem;
   color: var(--color-accent);
-  
 }
 
 nav ul {
@@ -83,7 +83,6 @@ nav ul {
 }
 
 nav a {
-  
   color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -111,27 +110,17 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-.parallax {
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
+/* Seção Hero */
 .hero {
-  background-attachment: fixed;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #000;
-  background-image: url('./2151542388.jpg');
-  background-size: cover;
-  background-position: center;
+  background: #000 url('./2151542388.jpg') top / cover no-repeat;
+  color: #fff;
   position: relative;
-  color: white; /* Para garantir que o texto seja legível */
-  z-index: 1; /* Para garantir que o conteúdo esteja acima de outros elementos, se necessário */
+  z-index: 1;
 }
 
 .hero::after {
@@ -141,11 +130,9 @@ nav a:hover::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.568); /* Camada de escurecimento opcional */
-  z-index: -1; /* Para colocar a camada atrás do conteúdo */
+  background: rgba(0, 0, 0, 0.568);
+  z-index: -1;
 }
-
-
 
 .hero-content {
   position: relative;
@@ -154,8 +141,8 @@ nav a:hover::after {
   padding: 0 20px;
 }
 
+/* Títulos */
 h1, h2, h3, h4 {
-  text-decoration: none;
   font-family: var(--font-gothic);
   margin-bottom: 1rem;
 }
@@ -164,38 +151,35 @@ h1, h2, h3, h4 {
   margin-top: 20px;
 }
 
+/* Botão padrão */
 .btn {
   margin-top: 20px;
   display: inline-block;
   padding: 0.8rem 1.5rem;
   background-color: var(--color-accent);
   color: var(--color-text);
-  text-decoration: none;
   border-radius: 30px;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn:hover {
-  text-decoration: none;  
+.btn:hover { 
   background-color: var(--color-secondary);
   transform: translateY(-3px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Campos de formulário */
 .form-input {
   text-align: center;
-  outline: none;
   padding: 15px 20px;
   font-size: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  outline: none;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   width: 70%;
@@ -205,10 +189,13 @@ h1, h2, h3, h4 {
 
 /* Efeito ao focar no campo de e-mail */
 .form-input:focus {
-  border-color: var(--color-accent); /* Cor do foco */
-  background: rgba(255, 255, 255, 0.3); /* Leve clareamento ao focar */
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.3);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
+/* Grade de cartões */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -221,9 +208,9 @@ h1, h2, h3, h4 {
   border-radius: 15px;
   padding: 2rem;
   text-align: center;
-  transition: all 0.3s ease;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -235,6 +222,7 @@ h1, h2, h3, h4 {
   color: var(--color-accent);
 }
 
+/* Radapé */
 footer {
   background-color: rgba(18, 14, 22, 0.9);
   padding: 2rem 0;
@@ -242,6 +230,7 @@ footer {
   margin-top: 4rem;
 }
 
+/* Links sociais */
 .social-links {
   display: flex;
   justify-content: center;
@@ -261,7 +250,6 @@ footer {
 }
 
 .fade-in {
-  
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
