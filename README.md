@@ -10,7 +10,7 @@
 - **Cultura Gótica**: Seção dedicada à história e evolução do movimento gótico.
 - **Literatura Gótica**: Explore clássicos e obras contemporâneas que definiram o gênero literário gótico.
 - **Monumentos Góticos**: Uma seção com destaque para as construções e monumentos mais icônicos da arquitetura gótica.
-- **Comunidade**: Estatísticas sobre a crescente comunidade, incluindo número de membros, artigos e discussões.
+- **Comunidade**: Estatísticas sobre a crescente comunidade, incluindo número de membros, artigos e discussões. 
 - **Destaque da Semana**: Cada semana, um novo item em destaque com mais detalhes sobre livros, artigos ou eventos importantes.
 - **Newsletter**: Assine para receber atualizações e novidades diretamente no seu e-mail.
 
