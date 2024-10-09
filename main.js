@@ -174,6 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Fechar modal ao clicar fora dele
+  window.addEventListener('click', (e) => {
+    modals.forEach(modal => {
+      if (e.target === modal) {
+        closeModal(modal);
+      }
+    });
+  });
+
   function openModal(modal) {
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
@@ -353,7 +362,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+  // Adiciona um evento de clique para links de navegação suave
+  navLinks.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+          e.preventDefault();
+          const targetId = e.target.getAttribute('href').slice(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+  });
+
   
+
 // Função para carregar imagens de forma lazy
 function lazyLoadImages() {
   const images = document.querySelectorAll('img[data-src]');
@@ -446,7 +469,15 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-
+}
+    // Fechar modal ao clicar fora dele ou no botão de fechar
+    monumentModals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('modal-close')) {
+                closeModal(modal);
+            }
+        });
+    });
 
     // Fechar modal com a tecla Esc
     document.addEventListener('keydown', (e) => {
@@ -457,25 +488,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Fechar modal ao clicar fora da área do modal
-window.addEventListener('click', (e) => {
-  modals.forEach(modal => {
-    if (e.target === modal) {
-      closeModal(modal);
-    }
-  });
 });
 
-// Função para fechar o modal
-function closeModal(modal) {
-  modal.classList.remove('show');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = ''; // Para permitir rolagem novamente
-}
+document.addEventListener('DOMContentLoaded', () => {
 
   // Funcionalidade específica para a página de monumentos
   const monumentModals = document.querySelectorAll('.modal');
@@ -504,6 +519,15 @@ function closeModal(modal) {
       document.body.style.overflow = '';
   }
 
+  // Fechar modal ao clicar fora dele ou no botão de fechar
+  monumentModals.forEach(modal => {
+      modal.addEventListener('click', (e) => {
+          if (e.target === modal || e.target.classList.contains('modal-close')) {
+              closeModal(modal);
+          }
+      });
+  });
+
   // Fechar modal com a tecla Esc
   document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -513,47 +537,4 @@ function closeModal(modal) {
           }
       }
   });
-});
-});
-
-const modals = document.querySelectorAll('.modal');
-const modalTriggers = document.querySelectorAll('.modal-trigger');
-const modalCloses = document.querySelectorAll('.modal-close');
-
-// Abrir modal ao clicar em um gatilho
-modalTriggers.forEach(trigger => {
-  trigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    const modal = document.querySelector(trigger.dataset.modal);
-    if (modal) {
-      openModal(modal);
-    }
-  });
-});
-
-// Fechar modal ao clicar no botão de fechar
-modalCloses.forEach(close => {
-  close.addEventListener('click', () => {
-    const modal = close.closest('.modal');
-    closeModal(modal);
-  });
-});
-
-// Fechar modal ao clicar fora do modal
-window.addEventListener('click', (e) => {
-  modals.forEach(modal => {
-    if (e.target === modal) {
-      closeModal(modal);
-    }
-  });
-});
-
-// Fechar modal com a tecla Esc
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const openModal = document.querySelector('.modal.show');
-    if (openModal) {
-      closeModal(openModal);
-    }
-  }
 });
