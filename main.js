@@ -516,3 +516,44 @@ function closeModal(modal) {
 });
 });
 
+const modals = document.querySelectorAll('.modal');
+const modalTriggers = document.querySelectorAll('.modal-trigger');
+const modalCloses = document.querySelectorAll('.modal-close');
+
+// Abrir modal ao clicar em um gatilho
+modalTriggers.forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    const modal = document.querySelector(trigger.dataset.modal);
+    if (modal) {
+      openModal(modal);
+    }
+  });
+});
+
+// Fechar modal ao clicar no botão de fechar
+modalCloses.forEach(close => {
+  close.addEventListener('click', () => {
+    const modal = close.closest('.modal');
+    closeModal(modal);
+  });
+});
+
+// Fechar modal ao clicar fora do modal
+window.addEventListener('click', (e) => {
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
+// Fechar modal com a tecla Esc
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const openModal = document.querySelector('.modal.show');
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
+});
