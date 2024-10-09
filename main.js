@@ -123,17 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     elem.style.animation = `float ${3 + Math.random() * 2}s ease-in-out infinite`;
   });
 
-  // Funcionalidade de menu mobile
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('nav ul');
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('show');
-    });
-  }
 
   // Fechar menu ao clicar em um link (para mobile)
   const navLinks = document.querySelectorAll('nav ul li a');  // Declaração única

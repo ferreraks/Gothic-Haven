@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gothic Haven - Cultura Gótica</title>
     <meta name="description" content="Explore a fascinante história e evolução do movimento gótico no Gothic Haven.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous" async></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -13,21 +13,17 @@
 <body>
     <header>
         <nav class="container">
-          <h1 class="typing">Gothic Haven</h1>
-          <button class="menu-toggle" aria-label="Abrir menu de navegação">
-            <span class="sr-only">Menu</span>
-            <i class="fas fa-bars" aria-hidden="true"></i>
-          </button>
-          <ul>
-            <li><a href="./index.html" aria-current="page">Início</a></li>
-            <li><a href="./cultura.html">Cultura</a></li>
-            <li><a href="./literatura.html">Literatura</a></li>
-            <li><a href="./monumentos.html">Monumentos</a></li>
-            <li><a href="#inspiracoes">BETA</a></li>
-            <li><a href="#comunidade">BETA</a></li>
-          </ul>
-        </nav>
-      </header>
+            <h1>Gothic Haven</h1>
+            <button class="menu-toggle">Menu</button>
+            <ul>
+                <li><a href="/index.html">Início</a></li>
+                <li><a href="/pages/cultura.html">Cultura</a></li>
+                <li><a href="/pages/literatura.html">Literatura</a></li>
+                <li><a href="/pages/monumentos.html">Monumentos</a></li>
+                <li><a href="#inspiracoes">BETA</a></li>
+                <li><a href="#comunidade">BETA</a></li>
+            </ul>
+    </header>
 
     <main>
         <section class="hero parallax">
@@ -43,22 +39,22 @@
                 <article class="card fade-in">
                     <h3>Moda Gótica</h3>
                     <p>A moda gótica é caracterizada por roupas escuras, acessórios elaborados e maquiagem dramática.</p>
-                    <a href="#moda-gotica" class="btn modal-trigger">Saiba mais</a>
+                    <a data-modal="#moda-gotica" class="btn modal-trigger">Saiba mais</a>
                 </article>
                 <article class="card fade-in">
                     <h3>Música Gótica</h3>
                     <p>A música gótica surgiu no final dos anos 70 e início dos 80, com bandas como Bauhaus e The Cure.</p>
-                    <a href="#musica-gotica" class="btn modal-trigger">Explorar</a>
+                    <a data-modal="#musica-gotica" class="btn modal-trigger">Explorar</a>
                 </article>
                 <article class="card fade-in">
                     <h3>Arte Gótica</h3>
                     <p>A arte gótica abrange desde a arquitetura medieval até expressões contemporâneas.</p>
-                    <a href="#arte-gotica" class="btn modal-trigger">Descobrir</a>
+                    <a data-modal="#arte-gotica" class="btn modal-trigger">Descobrir</a>
                 </article>
                 <article class="card fade-in">
                     <h3>Filosofia Gótica</h3>
                     <p>A filosofia gótica explora temas de existencialismo, niilismo e romantismo sombrio.</p>
-                    <a href="#filosofia-gotica" class="btn modal-trigger">Aprofundar</a>
+                    <a data-modal="#filosofia-gotica" class="btn modal-trigger">Aprofundar</a>
                 </article>
             </div>
         </section>
@@ -120,10 +116,9 @@
 
     <div id="moda-gotica" class="modal" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" aria-label="Fechar modal">&times;</button>
             <h2>Moda Gótica</h2>
             <p>A moda gótica é uma expressão visual única que combina elementos de romantismo sombrio, punk e vitoriano. Caracteriza-se por:</p>
-            <ul>
+            <ul class="inline-list">
                 <li>Uso predominante de preto, com acentos em roxo, vermelho ou prata</li>
                 <li>Tecidos como renda, veludo e couro</li>
                 <li>Acessórios elaborados, incluindo joias com símbolos ocultistas</li>
@@ -132,7 +127,46 @@
             <p>A moda gótica evoluiu ao longo das décadas, incorporando influências de várias subculturas e períodos históricos.</p>
         </div>
     </div>
-
-    <script src="main.js" defer></script>
+    <div id="musica-gotica" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Música Gótica</h2>
+            <p>A música gótica surgiu no final dos anos 1970, com uma sonoridade sombria e introspectiva. Suas principais características incluem:</p>
+            <ul class="inline-list">
+              <li>Vocais profundos e atmosféricos, muitas vezes melancólicos</li>
+              <li>Guitarras distorcidas e batidas minimalistas</li>
+              <li>Temas que abordam a morte, solidão e o sobrenatural</li>
+              <li>Influências de post-punk, darkwave e ethereal wave</li>
+            </ul>
+            <p>Bandas como Bauhaus, The Cure e Siouxsie and the Banshees ajudaram a definir o gênero, que continua evoluindo ao incorporar elementos de eletrônica e rock alternativo.</p>
+          </div>
+        </div>
+    </div>
+    <div id="arte-gotica" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Arte Gótica</h2>
+            <p>A arte gótica, com origem na Idade Média, é marcada por formas e estilos únicos. As principais características são:</p>
+            <ul class="inline-list">
+              <li>Arcos ogivais e catedrais imponentes com detalhes elaborados</li>
+              <li>Uso dramático da luz e sombras, como nos vitrais coloridos</li>
+              <li>Figuras religiosas alongadas, com expressões emotivas</li>
+              <li>Temas de elevação espiritual e conexão com o divino</li>
+            </ul>
+            <p>A arte gótica influenciou movimentos posteriores e continua a inspirar a estética contemporânea da subcultura gótica.</p>
+          </div>
+        </div>
+    <div id="filosofia-gotica" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Filosofia Gótica</h2>
+            <p>A filosofia gótica explora temas profundos sobre a existência humana e o mistério da vida. Alguns dos principais pontos incluem:</p>
+            <ul class="inline-list">
+                <li>Fascinação com a mortalidade e a impermanência da vida</li>
+                <li>Busca pela beleza no sombrio e no macabro</li>
+                <li>Exploração da solidão, melancolia e introspecção</li>
+                <li>Desafiar as normas sociais e celebrar o individualismo</li>
+            </ul>
+            <p>Essa filosofia é influenciada pela literatura gótica e o romantismo, com um olhar crítico sobre a superficialidade da vida cotidiana.</p>
+        </div>
+    </div>
+    <script src="/main.js" defer></script>
 </body>
 </html>

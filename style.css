@@ -117,7 +117,7 @@ nav a:hover::after {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #000 url('./2151542388.jpg') top / cover no-repeat;
+  background: #000 url('./img/paralax.jpg') top / cover no-repeat;
   color: #fff;
   position: relative;
   z-index: 1;
@@ -165,6 +165,7 @@ h1, h2, h3, h4 {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn:hover { 
@@ -622,4 +623,10 @@ a:hover, .btn:hover {
 
 .monument-details p:last-child {
   margin-bottom: 0;
+  }
+
+  .inline-list {
+    list-style-position: inside; /* Mantém o ponto ao lado da frase */
+    padding-left: 0;
+    margin-left: 0;
   }

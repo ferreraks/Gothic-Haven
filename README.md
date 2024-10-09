@@ -9,7 +9,7 @@
 - **Página Inicial**: Introdução à cultura gótica com destaques sobre seus principais aspectos, como arte, literatura e arquitetura.
 - **Cultura Gótica**: Seção dedicada à história e evolução do movimento gótico.
 - **Literatura Gótica**: Explore clássicos e obras contemporâneas que definiram o gênero literário gótico.
-- **Monumentos Góticos**: Em breve, uma seção com destaque para as construções e monumentos mais icônicos da arquitetura gótica.
+- **Monumentos Góticos**: Uma seção com destaque para as construções e monumentos mais icônicos da arquitetura gótica.
 - **Comunidade**: Estatísticas sobre a crescente comunidade, incluindo número de membros, artigos e discussões.
 - **Destaque da Semana**: Cada semana, um novo item em destaque com mais detalhes sobre livros, artigos ou eventos importantes.
 - **Newsletter**: Assine para receber atualizações e novidades diretamente no seu e-mail.
@@ -24,9 +24,10 @@
 
 ## Estrutura do Projeto
 
-- `index.html`: Página inicial com introdução à cultura gótica.
+- `index.html`: Página inicial com introdução à cultura, literatura e monumentos góticos.
 - `cultura.html`: Página dedicada à história e evolução da cultura gótica.
 - `literatura.html`: Página sobre a literatura gótica.
+- `monumentos.html`: Uma página com destaque para as construções e monumentos mais icônicos da arquitetura gótica.
 - `style.css`: Estilos gerais do site.
 - `main.js`: Script para animações, contadores dinâmicos e modais.
 
