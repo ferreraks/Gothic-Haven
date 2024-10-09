@@ -1,5 +1,109 @@
 // main.js
 document.addEventListener('DOMContentLoaded', () => {
+  // Código existente (mantenha-o)...
+
+  // Funcionalidade para exibir detalhes dos monumentos
+  const monumentCards = document.querySelectorAll('.monument-card');
+  const monumentDetails = document.getElementById('monument-details');
+
+  const monumentInfo = {
+      'notre-dame': {
+          name: 'Catedral de Notre-Dame',
+          location: 'Paris, França',
+          description: 'A Catedral de Notre-Dame é um dos mais famosos exemplos da arquitetura gótica. Iniciada em 1163 e concluída em 1245, é conhecida por seus vitrais impressionantes e gárgulas icônicas.',
+          funFact: 'A catedral sobreviveu a um grande incêndio em 2019 e está atualmente em processo de restauração.'
+      },
+      'milan': {
+          name: 'Catedral de Milão',
+          location: 'Milão, Itália',
+          description: 'A Catedral de Milão, ou Duomo di Milano, é a maior igreja da Itália e levou quase seis séculos para ser concluída. Sua fachada elaborada é adornada com 135 agulhas e 3.400 estátuas.',
+          funFact: 'O telhado da catedral é acessível aos visitantes, oferecendo uma vista panorâmica de Milão.'
+      },
+      'cologne': {
+          name: 'Catedral de Colônia',
+          location: 'Colônia, Alemanha',
+          description: 'A Catedral de Colônia é um impressionante exemplo do gótico alemão. Sua construção começou em 1248 e só foi concluída em 1880, seguindo os planos originais do século XIII.',
+          funFact: 'As torres gêmeas da catedral têm 157 metros de altura, fazendo dela a igreja mais alta do mundo até 1884.'
+      },
+      'westminster': {
+          name: 'Abadia de Westminster',
+          location: 'Londres, Inglaterra',
+          description: 'A Abadia de Westminster é um grande exemplo do gótico inglês. Além de sua importância arquitetônica, é o local tradicional de coroação e sepultamento dos monarcas ingleses e britânicos.',
+          funFact: 'A abadia abriga o túmulo do Soldado Desconhecido, homenageando os mortos na Primeira Guerra Mundial.'
+      }
+  };
+
+  monumentCards.forEach(card => {
+      card.addEventListener('click', () => {
+          const monumentId = card.dataset.monument;
+          const info = monumentInfo[monumentId];
+          
+          if (info) {
+              monumentDetails.innerHTML = `
+                  <h3>${info.name}</h3>
+                  <p><strong>Localização:</strong> ${info.location}</p>
+                  <p>${info.description}</p>
+                  <p><strong>Curiosidade:</strong> ${info.funFact}</p>
+              `;
+              monumentDetails.style.display = 'block';
+          } else {
+              console.error('Informações do monumento não encontradas');
+          }
+
+          monumentCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+      });
+  });
+
+  // Animação de fade-in para elementos
+  const fadeElems = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+          }
+      });
+  }, { threshold: 0.1 });
+
+  fadeElems.forEach(elem => observer.observe(elem));
+
+  // Funcionalidade de menu mobile
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('show');
+      });
+  }
+
+  // Fechar menu ao clicar em um link (para mobile)
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+              navMenu.classList.remove('show');
+              menuToggle.setAttribute('aria-expanded', 'false');
+          }
+      });
+  });
+
+  // Mudança de estilo do header ao rolar
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+      } else {
+          header.classList.remove('scrolled');
+      }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  
   // Animação de fade-in para elementos
   
   const fadeElems = document.querySelectorAll('.fade-in');
@@ -378,6 +482,55 @@ document.addEventListener('DOMContentLoaded', () => {
 }
     // Fechar modal ao clicar fora dele ou no botão de fechar
     monumentModals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('modal-close')) {
+                closeModal(modal);
+            }
+        });
+    });
+
+    // Fechar modal com a tecla Esc
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.modal.show');
+            if (openModal) {
+                closeModal(openModal);
+            }
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Funcionalidade específica para a página de monumentos
+  const monumentModals = document.querySelectorAll('.modal');
+  const monumentModalTriggers = document.querySelectorAll('.modal-trigger');
+
+  monumentModalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modal = document.querySelector(trigger.dataset.modal);
+          if (modal) {
+              openModal(modal);
+          }
+      });
+  });
+
+  function openModal(modal) {
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-close').focus();
+  }
+
+  function closeModal(modal) {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+  }
+
+  // Fechar modal ao clicar fora dele ou no botão de fechar
+  monumentModals.forEach(modal => {
       modal.addEventListener('click', (e) => {
           if (e.target === modal || e.target.classList.contains('modal-close')) {
               closeModal(modal);
