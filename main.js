@@ -461,6 +461,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Fechar modal ao clicar fora da área do modal
+window.addEventListener('click', (e) => {
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
+// Função para fechar o modal
+function closeModal(modal) {
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = ''; // Para permitir rolagem novamente
+}
+
   // Funcionalidade específica para a página de monumentos
   const monumentModals = document.querySelectorAll('.modal');
   const monumentModalTriggers = document.querySelectorAll('.modal-trigger');
@@ -499,3 +515,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 });
+
