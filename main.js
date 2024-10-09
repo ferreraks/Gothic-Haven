@@ -174,15 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Fechar modal ao clicar fora dele
-  window.addEventListener('click', (e) => {
-    modals.forEach(modal => {
-      if (e.target === modal) {
-        closeModal(modal);
-      }
-    });
-  });
-
   function openModal(modal) {
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
@@ -362,21 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-  // Adiciona um evento de clique para links de navegação suave
-  navLinks.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') {
-          e.preventDefault();
-          const targetId = e.target.getAttribute('href').slice(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-      }
-  });
-
   
-
 // Função para carregar imagens de forma lazy
 function lazyLoadImages() {
   const images = document.querySelectorAll('img[data-src]');
@@ -469,15 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-}
-    // Fechar modal ao clicar fora dele ou no botão de fechar
-    monumentModals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target.classList.contains('modal-close')) {
-                closeModal(modal);
-            }
-        });
-    });
+
 
     // Fechar modal com a tecla Esc
     document.addEventListener('keydown', (e) => {
@@ -488,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-});
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -519,15 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
   }
 
-  // Fechar modal ao clicar fora dele ou no botão de fechar
-  monumentModals.forEach(modal => {
-      modal.addEventListener('click', (e) => {
-          if (e.target === modal || e.target.classList.contains('modal-close')) {
-              closeModal(modal);
-          }
-      });
-  });
-
   // Fechar modal com a tecla Esc
   document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -537,4 +497,5 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       }
   });
+});
 });
